@@ -1,14 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>로또 번호 추천기</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div>
+          <h1>로또 번호 추천기</h1>
+          <div class="sub">
+            버튼 한 번으로 1~45에서 <span style="opacity:.95">중복 없이 6개</span>를 뽑아 오름차순으로 보여줘요.<br>
+            마음에 안 들면 “다시 추천”으로 무한 리롤!
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="primary" id="btnPick">번호 추천</button>
+          <button id="btnReroll" disabled>다시 추천</button>
+          <button id="btnCopy" disabled>복사</button>
+          <button id="btnClear">히스토리 삭제</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="numbers" id="numbers" aria-live="polite">
+          <span style="color: rgba(233,238,255,0.7);">아직 번호가 없어요. “번호 추천”을 눌러줘!</span>
+        </div>
+
+        <div class="meta">
+          <span class="pill" id="seedInfo">랜덤 방식: Fisher–Yates 셔플</span>
+          <span class="pill" id="lastTime">최근 추천: -</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h1 style="font-size:18px; margin:0;">히스토리</h1>
+        <div class="sub" style="margin-bottom: 10px;">최근 추천한 번호 10개까지 저장해요.</div>
+        <div class="history" id="history"></div>
+      </div>
+
+      <div class="card">
+        <h1 style="font-size:18px; margin:0;">사용 팁</h1>
+        <div class="sub" style="margin-top: 10px;">
+          - “복사”를 누르면 <span style="opacity:.95">예: 3, 11, 19, 22, 34, 41</span> 형태로 클립보드에 저장돼요.<br>
+          - 번호는 완전 랜덤이니까, 재미로 참고용으로만 써줘요 😄
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">복사 완료!</div>
+
+  <script src="main.js"></script>
 </body>
 </html>
